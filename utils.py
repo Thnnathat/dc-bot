@@ -1,4 +1,14 @@
 import random
+import json
+import os
+from setting import *
+
+async def get_momma_jokes():
+    with open(os.path.join(DATA_DIR, "jokes.json"), encoding="utf8") as joke_file:
+        jokes = json.load(joke_file)
+    random_category = random.choice(list(jokes.keys()))
+    insult = random.choice(list(jokes[random_category]))
+    return insult
 
 vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
 
